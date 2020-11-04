@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// SetupApollo 默认配置apollo
 func SetupApollo() {
 	err := agollo.InitWithDefaultConfigFile(
 		agollo.WithLogger(agollo.NewLogger(agollo.LoggerWriter(os.Stdout))), // 打印日志信息
