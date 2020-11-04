@@ -10,22 +10,26 @@ import (
 	"time"
 )
 
-type RpcxAddr struct {
+type RpcxAddrInfo struct {
 	ServiceAddr string
 	ConsulAddr string
+	RpcxBasePath string
 }
 
 const (
 	FlagRpcxPort = "rpcx.port"
 	FlagRpcxConsulAddr = "rpcx.consul.addr"
+	FlagRpcxBasePath = "rpcx.base.path"
 )
 
-func GetRpcxAddr() RpcxAddr {
+func GetRpcxInfo() RpcxAddrInfo {
 	serviceAddr := fmt.Sprintf("%s:%s", GetHostIP(), agollo.Get(FlagRpcxPort))
 	consulAddr := agollo.Get(FlagRpcxConsulAddr)
-	return RpcxAddr{
+	basePath := agollo.Get(FlagRpcxBasePath)
+	return RpcxAddrInfo{
 		ServiceAddr: serviceAddr,
 		ConsulAddr:  consulAddr,
+		RpcxBasePath: basePath,
 	}
 }
 
