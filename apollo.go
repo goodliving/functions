@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func Setup() {
+func SetupApollo() {
 	err := agollo.InitWithDefaultConfigFile(
 		agollo.WithLogger(agollo.NewLogger(agollo.LoggerWriter(os.Stdout))), // 打印日志信息
 		agollo.AutoFetchOnCacheMiss(), // 在配置未找到时，去apollo的带缓存的获取配置接口，获取配置
