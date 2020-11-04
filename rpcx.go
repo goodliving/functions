@@ -10,12 +10,16 @@ type RpcxAddr struct {
 	ConsulAddr string
 }
 
+const (
+	FlagRpcxPort = "rpcx.port"
+	FlagRpcxConsulAddr = "rpcx.consul.addr"
+)
+
 func GetRpcxAddr() RpcxAddr {
-	serviceAddr := fmt.Sprintf("%s:%s", GetHostIP(), agollo.Get("rpcx.port"))
-	consulAddr := agollo.Get("rpcx.consul.addr")
+	serviceAddr := fmt.Sprintf("%s:%s", GetHostIP(), agollo.Get(FlagRpcxPort))
+	consulAddr := agollo.Get(FlagRpcxConsulAddr)
 	return RpcxAddr{
 		ServiceAddr: serviceAddr,
 		ConsulAddr:  consulAddr,
 	}
-
 }
